@@ -35,3 +35,8 @@ describe("When a button is created", () => {
     });
   });
 });
+// explication de test : 
+// vérification de l'inclusion d'un titre dans le bouton
+// vérification de l'affichage d'une étiquette"label" dans le bouton
+// vérification de l' Exécution de l'événement onClick lors du clic
+// test de création d'un input de type submit lorsque le type est BUTTON_TYPES.SUBMIT

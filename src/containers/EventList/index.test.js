@@ -109,3 +109,8 @@ describe("When Events is created", () => {
     });
   });
 });
+// est expliqué :
+// Affichage de la liste des cartes d'événements
+// Affichage d'un message d'erreur en cas d'erreur de chargement des données
+// Affichage d'une liste filtrée en fonction de la catégorie sélectionnée
+// Affichage des détails d'un événement après un clic

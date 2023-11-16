@@ -19,3 +19,7 @@ describe("Date helper", () => {
         });
     });
 });
+// test expliqué : 
+// création d'une date 
+// appel de la fonction getMonth
+// vérification du résultat si égal à l'attendu

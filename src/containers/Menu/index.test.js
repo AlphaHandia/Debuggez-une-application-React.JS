@@ -24,3 +24,6 @@ describe("When Menu is created", () => {
     });
   });
 });
+// test expliqué :
+// Affichage des liens obligatoires et du logo 
+// Changement de l'emplacement du document après un clic sur le bouton de contact 

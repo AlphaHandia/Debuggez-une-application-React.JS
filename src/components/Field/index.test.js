@@ -62,3 +62,12 @@ describe("When a field is created", () => {
     });
   });
 });
+// test expliqué : 
+// Vérification du nom du champ
+// Vérification du placeholder du champ
+// Vérification de l'étiquette associée au champ
+// Exécution de la fonction onChange lorsqu'une valeur est changée
+// Vérification du type de champ en tant qu'INPUT_TEXT
+// Vérification du type de champ en tant que TEXTAREA
+//  Vérification du type de champ en cas de valeur incorrecte
+

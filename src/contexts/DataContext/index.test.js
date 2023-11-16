@@ -52,3 +52,7 @@ describe("When a data context is created", () => {
     );
   });
 });
+// test expliqué :
+// Exécution d'un appel sur le fichier events.json
+// Gestion de l'échec de l'appel aux événements 
+// Test de la fonction api.loadData

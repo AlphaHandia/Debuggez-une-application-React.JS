@@ -20,3 +20,6 @@ describe("When a service card is created", () => {
     expect(contentElement).toBeInTheDocument();
   });
 });
+// test expliqué :
+// Affichage de l'image avec la valeur de l'attribut alt 
+// Affichag du contenu de la cart

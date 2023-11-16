@@ -29,3 +29,8 @@ describe("When Modal data is created", () => {
     await screen.findByText("Conférence #productCON");
   });
 });
+
+// test expliqué : 
+// donne le composant ModalEvent avec des données simulées (event={data}).
+// Utilise screen.findByText pour s'assurer que des données obligatoires telles que le titre, la description, la période et certaines prestations sont présentes.
+// Attente des éléments correspondants à l'aide de await pour gérer l'asynchronicité

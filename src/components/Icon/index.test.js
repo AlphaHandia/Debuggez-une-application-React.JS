@@ -15,4 +15,6 @@ describe("Icon component", () => {
         });
     });
 })
-
+// test epxliqué 
+// Vérification du chemin hash pour l'icône Twitch
+// Vérification du chemin hash pour l'icône Facebook

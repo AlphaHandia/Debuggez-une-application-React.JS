@@ -46,3 +46,7 @@ describe("When a event card is created", () => {
     });
   });
 });
+// explication test : 
+// Vérification de l'image avec une valeur alt
+// Vérification du titre, de l'étiquette et du mois affichés
+// verification de l'ajout de la classe "EventCard--small" lorsque la prop small est vraie

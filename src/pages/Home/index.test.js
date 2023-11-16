@@ -16,7 +16,7 @@ describe("When Home is created", () => {
     await screen.findByText("Prénom");
     await screen.findByText("Personnel / Entreprise");
     
-    await screen.findByText("Envoyer"); // Vérifie que le texte "Envoyer" est présent initialement.
+    await screen.findByText("Envoyer"); // vérification que le texte "Envoyer" est présent initialement.
   });
 
   describe("and a click is triggered on the submit button", () => {
@@ -32,39 +32,47 @@ describe("When Home is created", () => {
       // Attend que le texte "En cours" apparaisse après le clic.
       await screen.findByText("En cours");
 
-      // Vérifie que le texte "Envoyer" n'est plus présent.
+      // vérification que le texte "Envoyer" n'est plus présent.
       expect(screen.queryByText("Envoyer")).toBeNull();
 
       // Attend que le texte "Envoyer" réapparaisse après que le formulaire ait été envoyé.
       await waitFor(() => {
         expect(screen.queryByText("En cours")).toBeNull();
         expect(screen.queryByText("Envoyer")).not.toBeNull();
-        expect(screen.queryByText("Message envoyé !")).not.toBeNull(); // Vérifie que le message de succès est affiché.
+        expect(screen.queryByText("Message envoyé !")).not.toBeNull(); // vérification que le message de succès est affiché.
       });
     });
   });
 });
-// tests d'intégration 
+// test expliqué : - vérification que le formulaire contient les champs attendus -
+// Simulation d'un clic sur le bouton "Envoyer" et vérification  que le texte "En cours" apparaît.
+// Vérification que le bouton "Envoyer" disparaît, puis réapparaît avec le message de succès "Message envoyé !".
+// tests d'intégration :
 describe("When a page is created", () => {
   it("a list of events is displayed",async () => {
     render(<Home />);
    screen.queryByText("Conférence #productCON")
-    // OK implemented
+   
     
   })
   it("a list a people is displayed",async () => {
     render(<Home />);
    screen.queryByText("Directeur Marketing")
-    // OK implemented
+   
   })
   it("a footer is displayed",async () => {
     render(<Home />);
    screen.queryByText("Contactez-nous")
-    // OK implemented
+   
   })
   it("an event card, with the last event, is displayed",async () => {
     render(<Home />);
    screen.queryByText("AVRIL")
-    // OK implemented
+   
   })
 });
+// test expliqué :
+// Vérification la présence du texte "Conférence #productCON".
+// vérification la présence du texte "Directeur Marketing".
+// vérification la présence du texte "Contactez-nous".
+// vérification la présence du texte "AVRIL".

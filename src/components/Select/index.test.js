@@ -86,3 +86,10 @@ describe("When a select is created", () => {
     });
   });
 });
+// test expliquée :
+// Affichage de la liste des choix
+// Affichage du bouton de réduction
+// Affichage Avec une étiquette
+// Affichage de la liste des valeurs
+// Simulation d'un clic est déclenché sur un élément de choix
+// Simulation d'un clic est déclenché sur l'élément de choix "Toutes"

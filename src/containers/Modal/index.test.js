@@ -53,3 +53,7 @@ describe("When Modal data is created", () => {
     });
   });
 });
+// test expliqué 
+// Affichage du contenu du modal
+// Affichage du contenu du modal après un clic 
+// Masquage du contenu du modal après un clic sur le bouton de fermeture

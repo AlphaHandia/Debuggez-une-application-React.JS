@@ -27,3 +27,6 @@ describe("When a people card is created", () => {
     expect(titleElement).toBeInTheDocument();
   });
 });
+// test expliqué : 
+// Affichage de l'image avec une valeur alt
+// Affichage du titre et du mois

@@ -56,3 +56,9 @@ describe("When slider is created", () => {
     
   });
 });
+// test expliqué 
+// Mocke la fonction api.loadData pour simuler le chargement de données via mockReturnValue(mockdata).
+// Rend le composant Slider enveloppé dans le contexte de données DataProvider.
+// Utilise screen.findAllByTestId pour sélectionner toutes les cartes du slider par leur data-testid.
+// Affiche les informations de chaque carte, telles que le titre, la description et le mois, en utilisant les data-testid spécifiés.
+// Utilise expect pour vérifier que le nombre de cartes correspond au nombre de données dans mockdata.focus.

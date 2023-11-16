@@ -42,3 +42,6 @@ describe("When Form is created", () => {
       expect(onSuccess).toHaveBeenCalled();
     });
   });
+  // test expliqué :
+  // Affichage de la liste des champs de formulaire
+  // Appel de l'action de réussite après le clic sur le bouton de soumission "envoyer"
