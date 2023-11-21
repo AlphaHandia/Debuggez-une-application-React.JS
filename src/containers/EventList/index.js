@@ -1,4 +1,4 @@
-import { useState} from "react";
+import React, { useState } from "react";
 import EventCard from "../../components/EventCard";
 import Select from "../../components/Select";
 import { useData } from "../../contexts/DataContext";
@@ -11,51 +11,39 @@ const PER_PAGE = 9;
 
 const EventList = () => {
   const { data, error } = useData();
-  const [type, setType] = useState();
+  const [type, setType] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredEvents = data?.events
-    .filter((event) => {
-      //  code manquant pour les filtres
-      if (!type || event.type === type) {
-        return true;
-      }
-      return false;
-    })
-    .filter((event, index) => {
-      // console.log("filteredEvents after filtering:", filteredEvents); OK
-      // console.log("currentPage:", currentPage); // permet de controler l'état de la page OK
-      // console.log("PER_PAGE:", PER_PAGE); // permet de controler le nbr d element par page OK
-      // console.log("index:", index); // permet de controler le nombre d'index  OK
-
-      if (
-        (currentPage - 1) * PER_PAGE <= index &&
-        PER_PAGE * currentPage > index
-      ) {
-        return true;
-      }
-      return false;
-    });
-  // console.log("Filtered Events Length:", filteredEvents.length);    OK
-
-  const changeType = (evtType) => {
-    // console.log("Changing type to:", evtType);     OK
-    setCurrentPage(1);
-    //  Utilisez setTimeout pour vérifier la valeur après un court délai  OK
-    //  setTimeout(() => {
-    //   console.log("currentPage after setCurrentPage:", currentPage);
-    //  }, 100);  Attend 100 ms pour laisser le temps à l'état d'être mis à jour.    OK
-
-    setType(evtType);
-  // console.log("Changing type to:", evtType);        OK
+  const handlePageChange = (newPage) => {
+    console.log("Changing to page:", newPage);
+    setCurrentPage(newPage);
   };
 
-  const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
+  const handleTypeChange = (newType) => {
+    console.log("Changing type to:", newType);
+    setCurrentPage(1);
+    setType(newType);
+  };
+
+  const filteredEvents = (data?.events || [])
+    .filter((event) => !type || event.type === type)
+    .filter((event, index) => {
+      const startIndex = (currentPage - 1) * PER_PAGE;
+      const endIndex = (currentPage) * PER_PAGE;
+      console.log("startIndex:", startIndex, "endIndex:", endIndex, "index:", index);
+      return startIndex <= index && index < endIndex;
+    });
+
+  const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE)+1;
   const typeList = new Set(data?.events?.map((event) => event.type) || []);
+
+  console.log("currentPage:", currentPage);
+  console.log("pageNumber:", pageNumber);
+  console.log("Filtered Events:", filteredEvents);
 
   return (
     <>
-      {error && <div>An error occured</div>}
+      {error && <div>An error occurred</div>}
       {data === null ? (
         "loading"
       ) : (
@@ -63,34 +51,32 @@ const EventList = () => {
           <h3 className="SelectTitle">Catégories</h3>
           <Select
             selection={Array.from(typeList)}
-            onChange={(newValue) =>
-              newValue ? changeType(newValue) : changeType(null)
-            }
+            onChange={(newValue) => handleTypeChange(newValue)}
           />
-         <div id="events" className="ListContainer">
-  {filteredEvents ? (
-    filteredEvents.map((event) => (
-      <Modal key={event.id} Content={<ModalEvent event={event} />}>
-        {({ setIsOpened }) => (
-          <EventCard
-            onClick={() => setIsOpened(true)}    
-            imageSrc={event.cover}
-            title={event.title}
-            date={new Date(event.date)}
-            label={event.type}
-          />
-        )}
-      </Modal>
-    ))
-  ) : (
-    <div>No events to display.</div>
-  )}
-</div>
+
+          <div id="events" className="ListContainer">
+            {filteredEvents.length > 0 ? (
+              filteredEvents.map((event) => (
+                <Modal key={event.id} Content={<ModalEvent event={event} />}>
+                  {({ setIsOpened }) => (
+                    <EventCard
+                      onClick={() => setIsOpened(true)}
+                      imageSrc={event.cover}
+                      title={event.title}
+                      date={new Date(event.date)}
+                      label={event.type}
+                    />
+                  )}
+                </Modal>
+              ))
+            ) : (
+              <div>No events to display.</div>
+            )}
+          </div>
 
           <div className="Pagination">
-            {[...Array(pageNumber || 0)].map((_, n) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <a key={n} href="#events" onClick={() => setCurrentPage(n + 1)}>
+            {Array.from({ length: pageNumber }, (_, n) => (
+              <a key={`page-${n + 1}`} href="#events" onClick={() => handlePageChange(n + 1)}>
                 {n + 1}
               </a>
             ))}

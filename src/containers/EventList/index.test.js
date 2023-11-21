@@ -45,7 +45,15 @@ describe("When Events is created", () => {
         <EventList />
       </DataProvider>
     );
-    await screen.findByText("avril");
+       // Attendre que le texte "avril" soit présent
+       await screen.findByText("avril");
+
+       // Rechercher tous les éléments avec l'attribut data-testid="event-card"
+       const eventCards = await screen.findAllByTestId("event-card");
+   
+       // Vérifier que le nombre d'éléments correspond au nombre d'événements dans les données
+       expect(eventCards.length).toBe(data.events.length);
+     
   });
   describe("and an error occured", () => {
     it("an error message is displayed", async () => {

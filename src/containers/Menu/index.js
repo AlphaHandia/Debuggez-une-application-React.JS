@@ -22,7 +22,7 @@ const Menu = () => (
   event.preventDefault();
   console.log("Bouton 'Contact' cliqué");
   console.log("window.location.hash avant : ", window.location.hash);
-  window.location.hash = "#contact";
+  window.location.hash = "#contactForm";
   console.log("window.location.hash après : ", window.location.hash);
 }}>
   Contact
